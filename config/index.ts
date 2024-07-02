@@ -38,6 +38,10 @@ export const siteConfig: Metadata = {
     "css",
   ] as Array<string>,
   
+  
 }
+export const links = {
+  sourceCode: "https://github.com/utkarshb756/intellix",
+} as const;
 
 
