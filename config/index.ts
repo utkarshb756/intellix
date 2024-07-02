@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 
 export const siteConfig: Metadata = {
   title: "Intellix",
-  description: "A Modern Next.js 14 SaaS AI Platform.",
+  description: "Intellix: Your Next-Gen AI Platform for Effortless Image, Music, Code, and Video Generation",
   keywords: [
     "reactjs",
     "nextjs",
