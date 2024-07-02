@@ -44,10 +44,10 @@ export async function GET() {
           price_data: {
             currency: "USD",
             product_data: {
-              name: "Genius Pro",
+              name: "Intellix Pro",
               description: "Unlimited AI Generations.",
             },
-            unit_amount: 2000, // $20
+            unit_amount: 1000, // $10
             recurring: {
               interval: "month",
             },

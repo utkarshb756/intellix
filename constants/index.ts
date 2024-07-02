@@ -1,10 +1,13 @@
 import {
   Code,
+  Code2,
+  Code2Icon,
   Facebook,
   Github,
   ImageIcon,
   Instagram,
   LayoutDashboard,
+  MessageCircleCodeIcon,
   MessageSquare,
   Music,
   Settings,
@@ -12,29 +15,29 @@ import {
   VideoIcon,
 } from "lucide-react";
 
-export const MAX_FREE_COUNTS = 5 as const;
+export const MAX_FREE_COUNTS = 10 as const;
 
 export const TESTIMONIALS = [
   {
-    name: "Carlos",
+    name: "John",
     image: "/testimonials/user-1.jpeg",
-    title: "Marketing Specialist",
+    title: "Software Developer",
     description:
-      "This application has significantly boosted our marketing efforts.",
+      "Impressive AI tools for generating code and music effortlessly.",
   },
   {
-    name: "Emily",
+    name: "Olivia",
     image: "/testimonials/user-2.jpeg",
-    title: "Student",
+    title: "UX Designer",
     description:
-      "As a student, this app has been a lifesaver for organizing my tasks and schedules.",
+      "Intuitive AI tools transforming user experiences with creative visuals and music.",
   },
   {
-    name: "David",
+    name: "Michael",
     image: "/testimonials/user-3.jpeg",
-    title: "Entrepreneur",
+    title: "Digital Marketer",
     description:
-      "The efficiency and reliability of this tool are unparalleled. Highly recommended!",
+      "Revolutionary platform for AI-generated images that enhance marketing campaigns.",
   },
   {
     name: "Sophia",
@@ -46,38 +49,38 @@ export const TESTIMONIALS = [
 
 export const TOOLS = [
   {
-    label: "Conversation",
-    icon: MessageSquare,
+    label: "ChatGenius",
+    icon: MessageCircleCodeIcon,
     color: "text-violet-500",
     bgColor: "bg-violet-500/10",
     href: "/conversation",
   },
   {
-    label: "Music Generation",
+    label: "BeatBuilder",
     icon: Music,
     color: "text-emerald-500",
     bgColor: "bg-violet-500/10",
     href: "/music",
   },
   {
-    label: "Image Generation",
+    label: "PhotoGenius",
     icon: ImageIcon,
     color: "text-pink-700",
     bgColor: "bg-pink-700/10",
     href: "/image",
   },
   {
-    label: "Video Generation",
+    label: "MotionMaker",
     icon: VideoIcon,
     color: "text-orange-700",
     bgColor: "bg-orange-700/10",
     href: "/video",
   },
   {
-    label: "Code Generation",
-    icon: Code,
-    color: "text-green-700",
-    bgColor: "bg-green-700/10",
+    label: "CodeSmith",
+    icon: Code2Icon,
+    color: "text-blue-500",
+    bgColor: "bg-blue-700/10",
     href: "/code",
   },
 ] as const;

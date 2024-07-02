@@ -1,7 +1,7 @@
 "use client";
 
 import { useAuth } from "@clerk/nextjs";
-import { Github } from "lucide-react";
+// import { Github } from "lucide-react";
 import { Montserrat } from "next/font/google";
 import Image from "next/image";
 import Link from "next/link";
@@ -26,7 +26,7 @@ export const LandingNavbar = () => {
         </div>
 
         <h1 className={cn("text-2xl font-bold text-white", font.className)}>
-          Genius
+        Intellix
         </h1>
       </Link>
 
@@ -35,15 +35,7 @@ export const LandingNavbar = () => {
           <Link href={isSignedIn ? "/dashboard" : "/sign-up"}>Get Started</Link>
         </Button>
 
-        <Button className="rounded-full" asChild>
-          <Link
-            href={links.sourceCode}
-            target="_blank"
-            rel="noreferrer noopener"
-          >
-            <Github className="h-5 w-5" />
-          </Link>
-        </Button>
+       
       </div>
     </nav>
   );

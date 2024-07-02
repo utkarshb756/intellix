@@ -54,8 +54,8 @@ const VideoPage = () => {
   return (
     <div>
       <Heading
-        title="Video Generation"
-        description="Turn your prompt into video."
+        title="MotionMaker"
+        description="Creating motion that mesmerizes.."
         icon={VideoIcon}
         iconColor="text-orange-700"
         bgColor="bg-orange-700/10"
@@ -79,7 +79,7 @@ const VideoPage = () => {
                         className="border-0 outline-none focus-visible:ring-0 focus-visible:ring-transparent"
                         disabled={isLoading}
                         aria-disabled={isLoading}
-                        placeholder="Clown fish swimming around a coral reef."
+                        placeholder=" Intellix, generate a music video for a upbeat pop song."
                         {...field}
                       />
                     </FormControl>

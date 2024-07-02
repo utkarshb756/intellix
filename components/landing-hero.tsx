@@ -11,14 +11,16 @@ export const LandingHero = () => {
   return (
     <div className="text-white font-bold py-36 text-center space-y-5">
       <div className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl space-y-5 font-extrabold">
-        <h1>The Best AI Tool for</h1>
-        <div className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600">
+        <h1>The Ultimate AI Toolkit</h1>
+        <div className="text-transparent bg-clip-text bg-gradient-to-r from-[#F3EB78] to-[#AF4261]">
+
+
           <TypewriterComponent
             options={{
               strings: [
-                "Chatbot.",
+                "conversations.",
                 "Photo Generation.",
-                "Music Generation.",
+                "Music Composition.",
                 "Code Generation.",
                 "Video Generation.",
               ],
@@ -30,7 +32,7 @@ export const LandingHero = () => {
       </div>
 
       <div className="text-sm md:text-xl font-light text-zinc-400">
-        Create content using AI 10x faster.
+      Boost your content creation speed with AI, achieving results 100x faster.
       </div>
 
       <div className="">
@@ -40,7 +42,7 @@ export const LandingHero = () => {
           asChild
         >
           <Link href={isSignedIn ? "/dashboard" : "/sign-up"}>
-            Start Generating For Free
+            Enter The World For Free
           </Link>
         </Button>
       </div>

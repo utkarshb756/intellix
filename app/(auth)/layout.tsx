@@ -15,11 +15,11 @@ const AuthLayout = ({ children }: PropsWithChildren) => {
     <div className="flex flex-col items-center justify-center gap-y-8 h-full">
       <Link href="/dashboard" className="flex items-center">
         <div className="relative w-8 h-8 mr-4">
-          <Image src="/logo.png" alt="Genius logo" fill />
+          <Image src="/logo.png" alt="Genius logo" height={500} width={500} />
         </div>
 
         <h1 className={cn("text-2xl font-bold", montserrat.className)}>
-          Genius
+        Intellix
         </h1>
       </Link>
       {children}

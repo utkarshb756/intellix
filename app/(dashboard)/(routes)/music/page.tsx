@@ -54,8 +54,8 @@ const MusicPage = () => {
   return (
     <div>
       <Heading
-        title="Music Generation"
-        description="Turn your prompt into music."
+        title="BeatBuilder"
+        description="Building rhythms that move you."
         icon={Music}
         iconColor="text-emerald-500"
         bgColor="bg-emerald-500/10"
@@ -79,7 +79,7 @@ const MusicPage = () => {
                         className="border-0 outline-none focus-visible:ring-0 focus-visible:ring-transparent"
                         disabled={isLoading}
                         aria-disabled={isLoading}
-                        placeholder="Piano solo"
+                        placeholder="Hey Intellix, compose a jazz piece with saxophone and piano."
                         {...field}
                       />
                     </FormControl>

@@ -105,8 +105,8 @@ const ImagePage = () => {
   return (
     <div>
       <Heading
-        title="Image Generation"
-        description="Turn your prompt into an image."
+        title="PhotoGenius"
+        description="Genius in every photo."
         icon={ImageIcon}
         iconColor="text-pink-700"
         bgColor="bg-pink-700/10"
@@ -130,7 +130,7 @@ const ImagePage = () => {
                         className="border-0 outline-none focus-visible:ring-0 focus-visible:ring-transparent"
                         disabled={isLoading}
                         aria-disabled={isLoading}
-                        placeholder="A picture of a horse in Swiss Alps."
+                        placeholder="Hey Intellix, create a sci-fi spaceship traveling through outer space."
                         {...field}
                       />
                     </FormControl>

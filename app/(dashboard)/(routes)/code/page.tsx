@@ -2,7 +2,7 @@
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import axios from "axios";
-import { Code } from "lucide-react";
+import { Code, Code2Icon } from "lucide-react";
 import { useRouter } from "next/navigation";
 import type { ChatCompletionRequestMessage } from "openai";
 import { useState } from "react";
@@ -66,11 +66,11 @@ const CodePage = () => {
   return (
     <div>
       <Heading
-        title="Code Generation"
-        description="Generate code using descriptive text."
-        icon={Code}
-        iconColor="text-green-700"
-        bgColor="bg-green-700/10"
+        title="CodeSmith"
+        description="Smithing elegant code solutions."
+        icon={Code2Icon}
+        iconColor="text-blue-500"
+        bgColor="bg-blue-700/10"
       />
 
       <div className="px-4 lg:px-8">
@@ -91,7 +91,7 @@ const CodePage = () => {
                         className="border-0 outline-none focus-visible:ring-0 focus-visible:ring-transparent"
                         disabled={isLoading}
                         aria-disabled={isLoading}
-                        placeholder="Simple toggle button using React hooks."
+                        placeholder="Hey Intellix, create a JavaScript function to sort an array."
                         {...field}
                       />
                     </FormControl>
