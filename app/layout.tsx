@@ -32,8 +32,8 @@ export default function RootLayout({ children }: PropsWithChildren) {
           <ModalProvider />
           <ToasterProvider />
           {children}
-          <footer className="text-center mt-4">
-            Created by <span className="text-yellow-500">Utkarsh Bansal</span>
+          <footer className="footer text-white">
+            Created by <span className="footer-text">Utkarsh Bansal</span>
           </footer>
         </body>
       </html>
