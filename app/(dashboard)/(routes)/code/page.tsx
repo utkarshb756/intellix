@@ -2,7 +2,7 @@
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import axios from "axios";
-import { Code, Code2Icon } from "lucide-react";
+import { Code2 as Code2Icon } from "lucide-react";
 import { useRouter } from "next/navigation";
 import type { ChatCompletionRequestMessage } from "openai";
 import { useState } from "react";
@@ -52,9 +52,11 @@ const CodePage = () => {
 
       setMessages((current) => [...current, userMessage, response.data]);
     } catch (error: unknown) {
-      if (axios.isAxiosError(error) && error?.response?.status === 403)
+      if (axios.isAxiosError(error) && error?.response?.status === 403) {
         proModal.onOpen();
-      else toast.error("Something went wrong.");
+      } else {
+        toast.error("Something went wrong.");
+      }
 
       console.error(error);
     } finally {
@@ -64,7 +66,7 @@ const CodePage = () => {
   };
 
   return (
-    <div>
+    <div className="min-h-screen bg-background flex flex-col items-center py-12 px-4 lg:px-8">
       <Heading
         title="CodeSmith"
         description="Smithing elegant code solutions."
@@ -73,44 +75,42 @@ const CodePage = () => {
         bgColor="bg-blue-700/10"
       />
 
-      <div className="px-4 lg:px-8">
-        <div className="">
-          <Form {...form}>
-            <form
-              onSubmit={form.handleSubmit(onSubmit)}
-              autoComplete="off"
-              autoCapitalize="off"
-              className="rounded-lg border w-full p-4 px-3 md:px-6 focus-within:shadow-sm grid grid-cols-12 gap-2"
+      <div className="mt-8 w-full max-w-3xl">
+        <Form {...form}>
+          <form
+            onSubmit={form.handleSubmit(onSubmit)}
+            autoComplete="off"
+            autoCapitalize="off"
+            className="rounded-lg border border-gray-300 w-full p-4 px-3 md:px-6 focus-within:shadow-sm grid grid-cols-12 gap-2 bg-white/70 backdrop-blur-sm"
+          >
+            <FormField
+              name="prompt"
+              render={({ field }) => (
+                <FormItem className="col-span-12 lg:col-span-10">
+                  <FormControl className="m-0 p-0">
+                    <Input
+                      className="border-0 outline-none focus-visible:ring-0 focus-visible:ring-transparent bg-transparent"
+                      disabled={isLoading}
+                      aria-disabled={isLoading}
+                      placeholder="Hey Intellix, create a JavaScript function to sort an array."
+                      {...field}
+                    />
+                  </FormControl>
+                </FormItem>
+              )}
+            />
+
+            <Button
+              className="col-span-12 lg:col-span-2 w-full bg-gradient-to-r from-blue-500 to-indigo-600 text-white font-semibold shadow-md hover:shadow-lg transition-shadow duration-300"
+              disabled={isLoading}
+              aria-disabled={isLoading}
             >
-              <FormField
-                name="prompt"
-                render={({ field }) => (
-                  <FormItem className="col-span-12 lg:col-span-10">
-                    <FormControl className="m-0 p-0">
-                      <Input
-                        className="border-0 outline-none focus-visible:ring-0 focus-visible:ring-transparent"
-                        disabled={isLoading}
-                        aria-disabled={isLoading}
-                        placeholder="Hey Intellix, create a JavaScript function to sort an array."
-                        {...field}
-                      />
-                    </FormControl>
-                  </FormItem>
-                )}
-              />
+              Generate
+            </Button>
+          </form>
+        </Form>
 
-              <Button
-                className="col-span-12 lg:col-span-2 w-full"
-                disabled={isLoading}
-                aria-disabled={isLoading}
-              >
-                Generate
-              </Button>
-            </form>
-          </Form>
-        </div>
-
-        <div className="space-y-4 mt-4">
+        <div className="space-y-4 mt-8">
           {isLoading && (
             <div className="p-8 rounded-lg w-full flex items-center justify-center bg-muted">
               <Loader />
@@ -120,18 +120,18 @@ const CodePage = () => {
             <Empty label="No conversation started." />
           )}
           <div className="flex flex-col-reverse gap-y-4">
-            {messages.map((message) => (
+            {messages.map((message, i) => (
               <div
-                key={message.content}
+                key={`${i}-${message.content}`}
                 className={cn(
-                  "p-8 w-full flex items-start gap-x-8 rounded-lg",
+                  "p-8 w-full flex items-start gap-x-8 rounded-lg shadow-md",
                   message.role === "user"
-                    ? "bg-white border border-black/10"
-                    : "bg-muted",
+                    ? "bg-white border border-gray-200"
+                    : "bg-gray-100"
                 )}
               >
                 {message.role === "user" ? <UserAvatar /> : <BotAvatar />}
-                <p className="text-sm">
+                <div className="text-sm">
                   <ReactMarkdown
                     components={{
                       pre: ({ node, ...props }) => (
@@ -140,17 +140,14 @@ const CodePage = () => {
                         </div>
                       ),
                       code: ({ node, ...props }) => (
-                        <code
-                          className="bg-black/10 rounded-lg p-1"
-                          {...props}
-                        />
+                        <code className="bg-black/10 rounded-lg p-1" {...props} />
                       ),
                     }}
                     className="text-sm overflow-hidden leading-7"
                   >
                     {message.content || ""}
                   </ReactMarkdown>
-                </p>
+                </div>
               </div>
             ))}
           </div>

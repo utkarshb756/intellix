@@ -40,10 +40,11 @@ const MusicPage = () => {
 
       setMusic(response.data.audio);
     } catch (error: unknown) {
-      if (axios.isAxiosError(error) && error?.response?.status === 403)
+      if (axios.isAxiosError(error) && error?.response?.status === 403) {
         proModal.onOpen();
-      else toast.error("Something went wrong.");
-
+      } else {
+        toast.error("Something went wrong.");
+      }
       console.error(error);
     } finally {
       form.reset();
@@ -52,7 +53,7 @@ const MusicPage = () => {
   };
 
   return (
-    <div>
+    <div className="min-h-screen bg-background flex flex-col items-center py-12 px-4 lg:px-8">
       <Heading
         title="BeatBuilder"
         description="Building rhythms that move you."
@@ -61,44 +62,42 @@ const MusicPage = () => {
         bgColor="bg-emerald-500/10"
       />
 
-      <div className="px-4 lg:px-8">
-        <div className="">
-          <Form {...form}>
-            <form
-              onSubmit={form.handleSubmit(onSubmit)}
-              autoComplete="off"
-              autoCapitalize="off"
-              className="rounded-lg border w-full p-4 px-3 md:px-6 focus-within:shadow-sm grid grid-cols-12 gap-2"
+      <div className="mt-8 w-full max-w-3xl">
+        <Form {...form}>
+          <form
+            onSubmit={form.handleSubmit(onSubmit)}
+            autoComplete="off"
+            autoCapitalize="off"
+            className="rounded-lg border border-gray-300 w-full p-4 px-3 md:px-6 focus-within:shadow-sm grid grid-cols-12 gap-2 bg-white/70 backdrop-blur-sm"
+          >
+            <FormField
+              name="prompt"
+              render={({ field }) => (
+                <FormItem className="col-span-12 lg:col-span-10">
+                  <FormControl className="m-0 p-0">
+                    <Input
+                      className="border-0 outline-none focus-visible:ring-0 focus-visible:ring-transparent bg-transparent"
+                      disabled={isLoading}
+                      aria-disabled={isLoading}
+                      placeholder="Hey Intellix, compose a jazz piece with saxophone and piano."
+                      {...field}
+                    />
+                  </FormControl>
+                </FormItem>
+              )}
+            />
+
+            <Button
+              className="col-span-12 lg:col-span-2 w-full bg-gradient-to-r from-emerald-500 to-teal-500 text-white font-semibold shadow-md hover:shadow-lg transition-shadow duration-300"
+              disabled={isLoading}
+              aria-disabled={isLoading}
             >
-              <FormField
-                name="prompt"
-                render={({ field }) => (
-                  <FormItem className="col-span-12 lg:col-span-10">
-                    <FormControl className="m-0 p-0">
-                      <Input
-                        className="border-0 outline-none focus-visible:ring-0 focus-visible:ring-transparent"
-                        disabled={isLoading}
-                        aria-disabled={isLoading}
-                        placeholder="Hey Intellix, compose a jazz piece with saxophone and piano."
-                        {...field}
-                      />
-                    </FormControl>
-                  </FormItem>
-                )}
-              />
+              Generate
+            </Button>
+          </form>
+        </Form>
 
-              <Button
-                className="col-span-12 lg:col-span-2 w-full"
-                disabled={isLoading}
-                aria-disabled={isLoading}
-              >
-                Generate
-              </Button>
-            </form>
-          </Form>
-        </div>
-
-        <div className="space-y-4 mt-4">
+        <div className="space-y-4 mt-8">
           {isLoading && (
             <div className="p-8 rounded-lg w-full flex items-center justify-center bg-muted">
               <Loader />
@@ -107,7 +106,7 @@ const MusicPage = () => {
           {!music && !isLoading && <Empty label="No music generated." />}
 
           {music && (
-            <audio controls className="w-full mt-8">
+            <audio controls className="w-full mt-4">
               <source src={music} />
             </audio>
           )}

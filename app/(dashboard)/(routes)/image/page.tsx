@@ -28,41 +28,17 @@ import { useProModal } from "@/hooks/use-pro-modal";
 import { imageFormSchema } from "@/schemas";
 
 const amountOptions = [
-  {
-    value: "1",
-    label: "1 Photo",
-  },
-  {
-    value: "2",
-    label: "2 Photos",
-  },
-  {
-    value: "3",
-    label: "3 Photos",
-  },
-  {
-    value: "4",
-    label: "4 Photos",
-  },
-  {
-    value: "5",
-    label: "5 Photos",
-  },
+  { value: "1", label: "1 Photo" },
+  { value: "2", label: "2 Photos" },
+  { value: "3", label: "3 Photos" },
+  { value: "4", label: "4 Photos" },
+  { value: "5", label: "5 Photos" },
 ];
 
 const resolutionOptions = [
-  {
-    value: "256x256",
-    label: "256x256",
-  },
-  {
-    value: "512x512",
-    label: "512x512",
-  },
-  {
-    value: "1024x1024",
-    label: "1024x1024",
-  },
+  { value: "256x256", label: "256x256" },
+  { value: "512x512", label: "512x512" },
+  { value: "1024x1024", label: "1024x1024" },
 ];
 
 const ImagePage = () => {
@@ -84,17 +60,15 @@ const ImagePage = () => {
   const onSubmit = async (values: z.infer<typeof imageFormSchema>) => {
     try {
       setImages([]);
-
       const response = await axios.post("/api/image", values);
-
       const urls = response.data.map((image: { url: string }) => image.url);
-
       setImages(urls);
     } catch (error: unknown) {
-      if (axios.isAxiosError(error) && error?.response?.status === 403)
+      if (axios.isAxiosError(error) && error?.response?.status === 403) {
         proModal.onOpen();
-      else toast.error("Something went wrong.");
-
+      } else {
+        toast.error("Something went wrong.");
+      }
       console.error(error);
     } finally {
       form.reset();
@@ -103,7 +77,7 @@ const ImagePage = () => {
   };
 
   return (
-    <div>
+    <div className="min-h-screen bg-background flex flex-col items-center py-12 px-4 lg:px-8">
       <Heading
         title="PhotoGenius"
         description="Genius in every photo."
@@ -112,102 +86,100 @@ const ImagePage = () => {
         bgColor="bg-pink-700/10"
       />
 
-      <div className="px-4 lg:px-8">
-        <div className="">
-          <Form {...form}>
-            <form
-              onSubmit={form.handleSubmit(onSubmit)}
-              autoComplete="off"
-              autoCapitalize="off"
-              className="rounded-lg border w-full p-4 px-3 md:px-6 focus-within:shadow-sm grid grid-cols-12 gap-2"
-            >
-              <FormField
-                name="prompt"
-                render={({ field }) => (
-                  <FormItem className="col-span-12 lg:col-span-6">
-                    <FormControl className="m-0 p-0">
-                      <Input
-                        className="border-0 outline-none focus-visible:ring-0 focus-visible:ring-transparent"
-                        disabled={isLoading}
-                        aria-disabled={isLoading}
-                        placeholder="Hey Intellix, create a sci-fi spaceship traveling through outer space."
-                        {...field}
-                      />
+      <div className="mt-8 w-full max-w-3xl">
+        <Form {...form}>
+          <form
+            onSubmit={form.handleSubmit(onSubmit)}
+            autoComplete="off"
+            autoCapitalize="off"
+            className="rounded-lg border border-gray-300 w-full p-4 px-3 md:px-6 focus-within:shadow-sm grid grid-cols-12 gap-2 bg-white/70 backdrop-blur-sm"
+          >
+            <FormField
+              name="prompt"
+              render={({ field }) => (
+                <FormItem className="col-span-12 lg:col-span-6">
+                  <FormControl className="m-0 p-0">
+                    <Input
+                      className="border-0 outline-none focus-visible:ring-0 focus-visible:ring-transparent bg-transparent"
+                      disabled={isLoading}
+                      aria-disabled={isLoading}
+                      placeholder="Hey Intellix, create a sci-fi spaceship traveling through outer space."
+                      {...field}
+                    />
+                  </FormControl>
+                </FormItem>
+              )}
+            />
+
+            <FormField
+              control={form.control}
+              name="amount"
+              render={({ field }) => (
+                <FormItem className="col-span-12 lg:col-span-2">
+                  <Select
+                    disabled={isLoading}
+                    onValueChange={field.onChange}
+                    value={field.value}
+                    defaultValue={field.value}
+                  >
+                    <FormControl>
+                      <SelectTrigger>
+                        <SelectValue defaultValue={field.value} />
+                      </SelectTrigger>
                     </FormControl>
-                  </FormItem>
-                )}
-              />
 
-              <FormField
-                control={form.control}
-                name="amount"
-                render={({ field }) => (
-                  <FormItem className="col-span-12 lg:col-span-2">
-                    <Select
-                      disabled={isLoading}
-                      onValueChange={field.onChange}
-                      value={field.value}
-                      defaultValue={field.value}
-                    >
-                      <FormControl>
-                        <SelectTrigger>
-                          <SelectValue defaultValue={field.value} />
-                        </SelectTrigger>
-                      </FormControl>
+                    <SelectContent>
+                      {amountOptions.map((option) => (
+                        <SelectItem key={option.value} value={option.value}>
+                          {option.label}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                </FormItem>
+              )}
+            />
 
-                      <SelectContent>
-                        {amountOptions.map((option) => (
-                          <SelectItem key={option.value} value={option.value}>
-                            {option.label}
-                          </SelectItem>
-                        ))}
-                      </SelectContent>
-                    </Select>
-                  </FormItem>
-                )}
-              />
+            <FormField
+              control={form.control}
+              name="resolution"
+              render={({ field }) => (
+                <FormItem className="col-span-12 lg:col-span-2">
+                  <Select
+                    disabled={isLoading}
+                    onValueChange={field.onChange}
+                    value={field.value}
+                    defaultValue={field.value}
+                  >
+                    <FormControl>
+                      <SelectTrigger>
+                        <SelectValue defaultValue={field.value} />
+                      </SelectTrigger>
+                    </FormControl>
 
-              <FormField
-                control={form.control}
-                name="resolution"
-                render={({ field }) => (
-                  <FormItem className="col-span-12 lg:col-span-2">
-                    <Select
-                      disabled={isLoading}
-                      onValueChange={field.onChange}
-                      value={field.value}
-                      defaultValue={field.value}
-                    >
-                      <FormControl>
-                        <SelectTrigger>
-                          <SelectValue defaultValue={field.value} />
-                        </SelectTrigger>
-                      </FormControl>
+                    <SelectContent>
+                      {resolutionOptions.map((option) => (
+                        <SelectItem key={option.value} value={option.value}>
+                          {option.label}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                </FormItem>
+              )}
+            />
 
-                      <SelectContent>
-                        {resolutionOptions.map((option) => (
-                          <SelectItem key={option.value} value={option.value}>
-                            {option.label}
-                          </SelectItem>
-                        ))}
-                      </SelectContent>
-                    </Select>
-                  </FormItem>
-                )}
-              />
+            <Button
+              className="col-span-12 lg:col-span-2 w-full bg-gradient-to-r from-pink-500 to-purple-600 text-white font-semibold shadow-md hover:shadow-lg transition-shadow duration-300"
+              disabled={isLoading}
+              aria-disabled={isLoading}
+            >
+              Generate
+            </Button>
+          </form>
+        </Form>
 
-              <Button
-                className="col-span-12 lg:col-span-2 w-full"
-                disabled={isLoading}
-                aria-disabled={isLoading}
-              >
-                Generate
-              </Button>
-            </form>
-          </Form>
-        </div>
-
-        <div className="space-y-4 mt-4">
+        <div className="space-y-4 mt-8">
           {isLoading && (
             <div className="p-20">
               <Loader />
@@ -219,7 +191,7 @@ const ImagePage = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 mt-8">
             {images.map((src, i) => (
-              <Card key={src} className="rounded-lg overflow-hidden">
+              <Card key={src} className="rounded-lg overflow-hidden shadow-lg">
                 <div className="relative aspect-square">
                   <Image src={src} alt={`Generated image ${i + 1}`} fill />
                 </div>

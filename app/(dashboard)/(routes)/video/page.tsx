@@ -40,10 +40,11 @@ const VideoPage = () => {
 
       setVideo(response.data[0]);
     } catch (error: unknown) {
-      if (axios.isAxiosError(error) && error?.response?.status === 403)
+      if (axios.isAxiosError(error) && error?.response?.status === 403) {
         proModal.onOpen();
-      else toast.error("Something went wrong.");
-
+      } else {
+        toast.error("Something went wrong.");
+      }
       console.error(error);
     } finally {
       form.reset();
@@ -52,7 +53,7 @@ const VideoPage = () => {
   };
 
   return (
-    <div>
+    <div className="min-h-screen bg-background flex flex-col items-center py-12 px-4 lg:px-8">
       <Heading
         title="MotionMaker"
         description="Creating motion that mesmerizes.."
@@ -61,44 +62,42 @@ const VideoPage = () => {
         bgColor="bg-orange-700/10"
       />
 
-      <div className="px-4 lg:px-8">
-        <div className="">
-          <Form {...form}>
-            <form
-              onSubmit={form.handleSubmit(onSubmit)}
-              autoComplete="off"
-              autoCapitalize="off"
-              className="rounded-lg border w-full p-4 px-3 md:px-6 focus-within:shadow-sm grid grid-cols-12 gap-2"
+      <div className="mt-8 w-full max-w-3xl">
+        <Form {...form}>
+          <form
+            onSubmit={form.handleSubmit(onSubmit)}
+            autoComplete="off"
+            autoCapitalize="off"
+            className="rounded-lg border border-gray-300 w-full p-4 px-3 md:px-6 focus-within:shadow-sm grid grid-cols-12 gap-2 bg-white/70 backdrop-blur-sm"
+          >
+            <FormField
+              name="prompt"
+              render={({ field }) => (
+                <FormItem className="col-span-12 lg:col-span-10">
+                  <FormControl className="m-0 p-0">
+                    <Input
+                      className="border-0 outline-none focus-visible:ring-0 focus-visible:ring-transparent bg-transparent"
+                      disabled={isLoading}
+                      aria-disabled={isLoading}
+                      placeholder="Hey Intellix, generate a music video for an upbeat pop song."
+                      {...field}
+                    />
+                  </FormControl>
+                </FormItem>
+              )}
+            />
+
+            <Button
+              className="col-span-12 lg:col-span-2 w-full bg-gradient-to-r from-orange-700 to-amber-500 text-white font-semibold shadow-md hover:shadow-lg transition-shadow duration-300"
+              disabled={isLoading}
+              aria-disabled={isLoading}
             >
-              <FormField
-                name="prompt"
-                render={({ field }) => (
-                  <FormItem className="col-span-12 lg:col-span-10">
-                    <FormControl className="m-0 p-0">
-                      <Input
-                        className="border-0 outline-none focus-visible:ring-0 focus-visible:ring-transparent"
-                        disabled={isLoading}
-                        aria-disabled={isLoading}
-                        placeholder=" Intellix, generate a music video for a upbeat pop song."
-                        {...field}
-                      />
-                    </FormControl>
-                  </FormItem>
-                )}
-              />
+              Generate
+            </Button>
+          </form>
+        </Form>
 
-              <Button
-                className="col-span-12 lg:col-span-2 w-full"
-                disabled={isLoading}
-                aria-disabled={isLoading}
-              >
-                Generate
-              </Button>
-            </form>
-          </Form>
-        </div>
-
-        <div className="space-y-4 mt-4">
+        <div className="space-y-4 mt-8">
           {isLoading && (
             <div className="p-8 rounded-lg w-full flex items-center justify-center bg-muted">
               <Loader />
@@ -108,7 +107,7 @@ const VideoPage = () => {
 
           {video && (
             <video
-              className="w-full aspect-video mt-8 rounded-lg border bg-black"
+              className="w-full aspect-w-16 aspect-h-9 mt-4 rounded-lg border bg-black"
               controls
             >
               <source src={video} />
