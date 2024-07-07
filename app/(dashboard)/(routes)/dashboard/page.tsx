@@ -25,7 +25,7 @@ const DashboardPage = () => {
         {TOOLS.map((tool) => (
           <Card
             key={tool.href}
-            className="p-6 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105 cursor-pointer flex items-center justify-between bg-white hover:bg-gradient-to-r hover:from-[#abc9e9] hover:to-[#f5bfd7] border border-gray-200"
+            className="p-6 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105 cursor-pointer flex items-center justify-between bg-white hover:bg-gradient-to-r hover:from-yellow-200 hover:to-orange-300 border border-gray-200"
             onClick={() => router.push(tool.href)}
           >
             <div className="flex items-center gap-x-4">
