@@ -14,7 +14,7 @@ body,
   width: 100%;
   text-align: center;
   z-index: 10;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Add a shadow for better readability */
+  /* text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); Add a shadow for better readability */
 }
 
 .footer-text {

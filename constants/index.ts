@@ -94,32 +94,15 @@ export const ROUTES = [
   },
   ...TOOLS,
   {
+    label: "Review",
+    icon: MessageSquare,
+    href: "/review",
+    color: "text-green-500",
+  },
+  {
     label: "Settings",
     icon: Settings,
     href: "/settings",
     color: null,
   },
 ] as const;
-
-export const FOOTER_LINKS = [
-  {
-    name: "Facebook",
-    icon: Facebook,
-    link: "https://facebook.com",
-  },
-  {
-    name: "Twitter",
-    icon: Twitter,
-    link: "https://twitter.com",
-  },
-  {
-    name: "Instagram",
-    icon: Instagram,
-    link: "https://instagram.com",
-  },
-  {
-    name: "Github",
-    icon: Github,
-    link: "https://github.com",
-  },
-];

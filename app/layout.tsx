@@ -33,7 +33,7 @@ export default function RootLayout({ children }: PropsWithChildren) {
           <ToasterProvider />
           {children}
           <footer className="footer text-white">
-            Created by <span className="footer-text">Utkarsh Bansal</span>
+             <span className="footer-text">Created by Utkarsh Bansal</span>
           </footer>
         </body>
       </html>
