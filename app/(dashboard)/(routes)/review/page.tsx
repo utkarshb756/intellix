@@ -19,7 +19,9 @@ const ReviewPage = () => {
 
   return (
     <div className="container mx-auto p-4">
-      <h2 className="text-2xl md:text-3xl font-extrabold text-center mb-8 bg-clip-text text-transparent bg-gradient-to-r from-yellow-500 to-orange-600 animate-text"> Join Intellix's Fanbase: Share Your Thoughts</h2> {/* Centered heading */}
+      <h1 className="text-3xl font-bold mb-8 text-center">
+        Add a Review and Join the List of Intellix Enthusiasts
+      </h1> {/* Updated heading text */}
       <div className="flex justify-center">
         <Button
           onClick={handleReviewClick}
