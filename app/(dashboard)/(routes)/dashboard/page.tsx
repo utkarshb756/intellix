@@ -11,7 +11,7 @@ const DashboardPage = () => {
   const router = useRouter();
 
   return (
-    <div className="min-h-screen flex flex-col items-center py-12 bg-gradient-to-br from-indigo-50 to-blue-100">
+    <div className="min-h-screen flex flex-col items-center py-12 ">
       <div className="mb-12 space-y-6 text-center">
         <h2 className="text-4xl md:text-6xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-yellow-500 to-orange-600 animate-text">
           Discover the Potential of AI
