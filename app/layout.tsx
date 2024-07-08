@@ -19,10 +19,12 @@ export default function RootLayout({ children }: PropsWithChildren) {
     <ClerkProvider
       appearance={{
         variables: {
-          colorPrimary: "#6F5AF6",
+          colorPrimary: "#eab208",
+          
         },
         layout: {
           logoPlacement: "none",
+          socialButtonsPlacement:"bottom",
         },
       }}
     >
