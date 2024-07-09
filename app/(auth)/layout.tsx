@@ -4,6 +4,7 @@ import Link from "next/link";
 import type { PropsWithChildren } from "react";
 
 import { cn } from "@/lib/utils";
+import Proof from "@/components/proof";
 
 const montserrat = Montserrat({
   weight: "600",
@@ -22,6 +23,7 @@ const AuthLayout = ({ children }: PropsWithChildren) => {
         Intellix
         </h1>
       </Link>
+      <Proof/>
       {children}
     </div>
   );

@@ -1,3 +1,4 @@
+import Proof from "@/components/proof";
 import type { PropsWithChildren } from "react";
 
 const LandingLayout = ({ children }: PropsWithChildren) => {
@@ -15,6 +16,7 @@ const LandingLayout = ({ children }: PropsWithChildren) => {
         </video>
       </div>
       <div className="relative z-10 mx-auto max-w-screen-xl min-h-screen">
+        <Proof/>
         {children}
       </div>
     </main>

@@ -4,6 +4,7 @@ import { Navbar } from "@/components/navbar";
 import { Sidebar } from "@/components/sidebar";
 import { getApiLimitCount } from "@/lib/api-limit";
 import { checkSubscription } from "@/lib/subscription";
+import Proof from "@/components/proof";
 
 const DashboardLayout = async ({ children }: PropsWithChildren) => {
   const apiLimitCount = await getApiLimitCount();
@@ -17,6 +18,7 @@ const DashboardLayout = async ({ children }: PropsWithChildren) => {
 
       <main className="md:md:pl-72">
         <Navbar />
+        <Proof/>
         {children}
       </main>
     </div>
