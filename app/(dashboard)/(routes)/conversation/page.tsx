@@ -90,7 +90,7 @@ const ConversationPage = () => {
                       className="border-0 outline-none focus-visible:ring-0 focus-visible:ring-transparent bg-transparent"
                       disabled={isLoading}
                       aria-disabled={isLoading}
-                      placeholder="Hey Intellix, could you explain how neural networks function?"
+                      placeholder="Hey  IntellixAI, could you explain how neural networks function?"
                       {...field}
                     />
                   </FormControl>

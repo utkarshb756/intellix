@@ -14,7 +14,7 @@ export const LandingFooter = () => {
         </div>
       </Link>
       <div className="text-white text-[15px]">
-        &copy; <span className="font-bold">Intellix</span>{" "}
+        &copy; <span className="font-bold"> IntellixAI</span>{" "}
         {new Date().getFullYear()}. All rights reserved.
       </div>
 

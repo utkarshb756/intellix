@@ -79,7 +79,7 @@ const MusicPage = () => {
                       className="border-0 outline-none focus-visible:ring-0 focus-visible:ring-transparent bg-transparent"
                       disabled={isLoading}
                       aria-disabled={isLoading}
-                      placeholder="Hey Intellix, compose a jazz piece with saxophone and piano."
+                      placeholder="Hey  IntellixAI, compose a jazz piece with saxophone and piano."
                       {...field}
                     />
                   </FormControl>

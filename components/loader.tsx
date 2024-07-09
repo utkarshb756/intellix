@@ -7,7 +7,7 @@ export const Loader = () => {
         <Image src="/logo.png" alt="logo" fill />
       </div>
 
-      <p className="text-sm text-muted-foreground">Intellix is computing results...</p>
+      <p className="text-sm text-muted-foreground"> IntellixAI is computing results...</p>
     </div>
   );
 };

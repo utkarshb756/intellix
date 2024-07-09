@@ -79,7 +79,7 @@ const VideoPage = () => {
                       className="border-0 outline-none focus-visible:ring-0 focus-visible:ring-transparent bg-transparent"
                       disabled={isLoading}
                       aria-disabled={isLoading}
-                      placeholder="Hey Intellix, generate a music video for an upbeat pop song."
+                      placeholder="Hey  IntellixAI, generate a music video for an upbeat pop song."
                       {...field}
                     />
                   </FormControl>

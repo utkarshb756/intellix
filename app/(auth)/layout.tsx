@@ -20,7 +20,7 @@ const AuthLayout = ({ children }: PropsWithChildren) => {
         </div>
 
         <h1 className={cn("text-2xl font-bold", montserrat.className)}>
-        Intellix
+        IntellixAI
         </h1>
       </Link>
       <Proof/>
