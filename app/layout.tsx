@@ -2,6 +2,7 @@ import { ClerkProvider } from "@clerk/nextjs";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import type { PropsWithChildren } from "react";
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 import { siteConfig } from "@/config";
 import { CrispProvider } from "@/providers/crisp-provider";
@@ -37,6 +38,7 @@ export default function RootLayout({ children }: PropsWithChildren) {
           <footer className="footer text-white">
              <span className="footer-text">Created by Utkarsh Bansal</span>
           </footer>
+          <SpeedInsights/>
         </body>
       </html>
     </ClerkProvider>
